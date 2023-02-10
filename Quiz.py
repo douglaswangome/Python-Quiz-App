@@ -1,3 +1,5 @@
+import html
+
 class Quiz():
   def __init__(self, question_list):
     self.score = 0
@@ -10,7 +12,7 @@ class Quiz():
   def next_question(self):
     current_question = self.question_list[self.question_number]
     self.question_number += 1
-    user_answer = input(f"Q.{self.question_number} {current_question.text} (True/False)\n")
+    user_answer = input(f"Q.{self.question_number} {html.unescape(current_question.text)} (True/False)\n")
     self.check_answer(current_question.answer, user_answer)
 
   def check_answer(self, correct_answer, user_answer):
